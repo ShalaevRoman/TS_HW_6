@@ -14,12 +14,12 @@ interface IMiddle {
 }
 
 interface IHeight {
-    [key: number]: boolean
+    [key: number]: boolean;
 }
 
 interface IMixed {
-    name: string,
-    [id: number]: number
+    name: string;
+    [id: number]: number;
 }
 
 interface IIndexSignatureInterface {
@@ -35,12 +35,12 @@ interface IExample {
     [key: string]: number | string | boolean;
 }
 
-const isNumericCriteria = (value: any) => typeof value === 'number';
+const isNumericCriteria = (...rest: any) => [...rest].every(element => typeof element === 'number');
 // add some criteria
 
 function checkTypeOfNumberIndexSignature (obj: IExample, criteria: (value: any) => boolean): boolean {
     for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
+        if (Object.hasOwn(obj, key)) {
             const value = obj[key];
             if (!criteria(value)) {
                 return false;
